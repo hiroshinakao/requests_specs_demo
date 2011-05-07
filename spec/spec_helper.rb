@@ -25,4 +25,13 @@ RSpec.configure do |config|
   # examples within a transaction, remove the following line or assign false
   # instead of true.
   config.use_transactional_fixtures = true
+
+  config.before(:all, :selenium => true) do
+    Capybara.current_driver = :selenium
+  end
+
+  config.after(:all, :selenium => true) do
+    Capybara.use_default_driver
+  end
+
 end
